@@ -8,7 +8,7 @@ export const appSlice = createSlice({
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
     enterChannel: (state, action) => {
-      state.channelId += 1;
+      state.channelId = action.payload.channelId;
     },
   }
 })
