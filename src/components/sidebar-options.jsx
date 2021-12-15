@@ -1,9 +1,14 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { enterChannel } from '../features/appSlice';
 import { db } from '../firebase';
 
+
 function SidebarOptions({Icon, title, addChannelOption, id}) {
-    
+    const dispatch = useDispatch();
+
+
     const addChannel = () => {
         const channelName = prompt('Please enter a name for the New Channel');
 
@@ -14,7 +19,14 @@ function SidebarOptions({Icon, title, addChannelOption, id}) {
         }
     };
 
-    const selectChannel = () => {};
+    const selectChannel = () => {
+        if (id){
+            dispatch(enterChannel({
+                channelId: id
+            }))
+        }
+    };
+
     return (
         <SidebarOptionsContainer onClick={addChannelOption ? addChannel : selectChannel}>
             {Icon && <Icon fontSize='small' style={{padding: 10}}/>}
