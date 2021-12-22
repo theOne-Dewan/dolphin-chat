@@ -1,22 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Avatar } from '@material-ui/core';
 import { FiberManualRecord, Create, InsertComment, Inbox, Drafts, BookmarkBorder, FileCopy, PeopleAlt, Apps, ExpandLess, ExpandMore, Add } from '@material-ui/icons';
 import SidebarOptions from './sidebar-options';
-import { db } from '../firebase';
+import { db, auth } from '../firebase';
 import { useCollection } from 'react-firebase-hooks/firestore';
+import { useAuthState } from "react-firebase-hooks/auth";
 
 function Sidebar() {
-    const [channels, loading, error] = useCollection(db.collection('channels'));
+    const [channels] = useCollection(db.collection('channels'));
+    const [user] = useAuthState(auth);
     
     
     return (
         <SidebarContainer >
             <SidebarHeader>
                 <SidebarInfo>
-                    <h2>Channel</h2>
+                    <SidebarAvatar src={user?.photoURL} alt={user?.displayName}/>
                     <h3>
                         <FiberManualRecord/>
-                        Name
+                        {user?.displayName}
                     </h3>
                 </SidebarInfo>
                 <Create/>
@@ -75,12 +78,6 @@ const SidebarHeader = styled.div`
 
 const SidebarInfo = styled.div`
     flex: 1;
-    
-    > h2{
-        font-size: 15px;
-        font-weight: 900;
-        margin-bottom: 5px;
-    }
 
     > h3{
         display: flex;
@@ -94,5 +91,15 @@ const SidebarInfo = styled.div`
         margin-top: 1px;
         margin-right: 2px;
         color: green;
+    }
+`;
+
+const SidebarAvatar = styled(Avatar)`
+    cursor: pointer;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    
+    :hover{
+        opacity: 0.8;
     }
 `;
