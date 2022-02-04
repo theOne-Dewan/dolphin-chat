@@ -65,7 +65,7 @@ const SidebarContainer = styled.div`
 
     > .channels-container{
         overflow: auto;
-        height: 220px;
+        height: 100px;
 
         ::-webkit-scrollbar {
             width: 20px;
