@@ -61,6 +61,26 @@ const ChatContainer= styled.div`
     flex-grow:1;
     overflow-y: scroll;
     margin-top: 60px;
+
+    ::-webkit-scrollbar {
+        width: 20px;
+      }
+    
+      ::-webkit-scrollbar-thumb {
+        background-color: #421f44;
+        border-radius: 20px;
+        border: 6px solid transparent;
+        background-clip: content-box;
+      }
+    
+      ::-webkit-scrollbar-thumb:hover {
+        background-color: rgb(129, 68, 133);
+      }
+    
+      ::-webkit-scrollbar-track {
+        background-color: white;
+        width: 5px;
+      }
 `;
 
 const Header= styled.div`
