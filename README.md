@@ -18,4 +18,6 @@ This React app allows users to login, create chat channels and chat with multipl
 * Multiple users can log in and use the app to message eachother in real-time.
 * Prevents anyone from accessing the website without successfully logging in due to strict session management.
 
+## Demo Video
 
+https://youtu.be/e7E3YzMj_ng
