@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { auth, provider } from '../firebase';
 import { Button } from '@material-ui/core';
 import styled from 'styled-components';
 
 function Login(){
+  useEffect(() => {
+    alert("This is a Work In Progress. At this time you can create channels, multiple people can log in and chat in different channels at the same time. The top left 7 tabs above the channels and a few other buttons are just for the UI and are not functional yet. Functionality will be added in the next update. Thank you.");
+  }, []);
+
   const signIn = (e) => {
     e.preventDefault();
     auth.signInWithPopup(provider).catch((error) => alert(error.message));

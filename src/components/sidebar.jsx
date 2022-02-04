@@ -37,10 +37,12 @@ function Sidebar() {
             <SidebarOptions Icon={ExpandMore} title='Channels'/>
             <hr/>
             <SidebarOptions Icon={Add} addChannelOption title='Add Channel'/>
-            
-            {channels?.docs.map((doc) => (
+            <div className='channels-container'>
+                {channels?.docs.map((doc) => (
                 <SidebarOptions key={doc.id} id={doc.id} title={doc.data().name} />
-            ))}
+                ))}
+            </div>
+            
         </SidebarContainer>
     );
 };
@@ -59,6 +61,31 @@ const SidebarContainer = styled.div`
         border: 1px solid #49274b;
         margin-top: 10px;
         margin-bottom: 10px;
+    }
+
+    > .channels-container{
+        overflow: auto;
+        height: 220px;
+
+        ::-webkit-scrollbar {
+            width: 20px;
+          }
+        
+          ::-webkit-scrollbar-thumb {
+            background-color: rgb(129, 68, 133);
+            border-radius: 20px;
+            border: 6px solid transparent;
+            background-clip: content-box;
+          }
+        
+          ::-webkit-scrollbar-thumb:hover {
+            background-color: rgb(166, 87, 171);
+          }
+        
+          ::-webkit-scrollbar-track {
+            background-color: #421f44;
+            width: 5px;
+          }
     }
 `;
 
